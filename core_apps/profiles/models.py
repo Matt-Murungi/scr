@@ -56,4 +56,4 @@ class Profile(TimeStampedModel):
         self.followers.remove(profile)
 
     def check_following(self, profile):
-        return self.followers.filter(pkid=profile.pkid).exist()
+        return self.followers.filter(pkid=profile.pkid).exists()
