@@ -70,14 +70,14 @@ services:
     command: /start-celeryworker
     container_name: celery_worker
     volumes:
-        - .:/app
+      - .:/app
     env_file:
-        - ./.envs/.local/.django
-        - ./.envs/.local/.postgres
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
     depends_on:
-        - redis
-        - postgres
-        - mailhog
+      - redis
+      - postgres
+      - mailhog
     networks:
       - tiny-medium
 
@@ -86,9 +86,8 @@ services:
         context: .
         dockerfile: ./docker/local/django/Dockerfile
     command: /start-flower
-    container_name: flower
     volumes:
-        - .:/app
+        - flower_data:/data
     env_file:
         - ./.envs/.local/.django
         - ./.envs/.local/.postgres
